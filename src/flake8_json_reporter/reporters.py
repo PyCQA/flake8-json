@@ -35,10 +35,11 @@ class DefaultJSON(base.BaseFormatter):
 
     def beginning(self, filename):
         """We're starting a new file."""
+        json_filename = json.dumps(filename)
         if self.files_reported_count > 0:
-            self.write_line(', "{}": ['.format(filename))
+            self.write_line(', {}: ['.format(json_filename))
         else:
-            self.write_line('"{}": ['.format(filename))
+            self.write_line('{}: ['.format(json_filename))
         self.reported_errors_count = 0
 
     def finished(self, filename):
