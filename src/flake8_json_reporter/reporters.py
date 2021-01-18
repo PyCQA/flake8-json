@@ -91,7 +91,7 @@ class CodeClimateJSON(base.BaseFormatter):
 
     def start(self):
         """Override the default to start printing JSON."""
-        super(DefaultJSON, self).start()
+        super(CodeClimateJSON, self).start()
         self.write_line("{")
         self.files_reported_count = 0
 
@@ -121,8 +121,8 @@ class CodeClimateJSON(base.BaseFormatter):
                 violation.code,
                 violation.line_number,
                 violation.physical_line,
-            )
-        )
+            ).encode()
+        ).hexdigest()
 
     def dictionary_from(self, violation):
         """Convert a Violation to a dictionary."""
