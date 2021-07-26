@@ -1,2 +1,2 @@
 """flake8_json_reporter module."""
-__version__ = "21.1.0"
+__version__ = "21.7.0"
