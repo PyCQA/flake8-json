@@ -132,6 +132,7 @@ class CodeClimateJSON(base.BaseFormatter):
             "check_name": violation.code,
             "description": violation.text,
             "categories": ["Style"],  # TODO: guess based on well-known codes?
+            "severity": "minor",
             "location": {
                 "path": violation.filename,
                 "positions": {
