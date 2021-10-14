@@ -1,6 +1,4 @@
 """Module containing all of the JSON reporters for Flake8."""
-from __future__ import print_function, unicode_literals
-
 import hashlib
 import json
 
@@ -26,7 +24,7 @@ class DefaultJSON(base.BaseFormatter):
 
     def start(self):
         """Override the default to start printing JSON."""
-        super(DefaultJSON, self).start()
+        super().start()
         self.write_line("{")
         self.files_reported_count = 0
 
@@ -38,9 +36,9 @@ class DefaultJSON(base.BaseFormatter):
         """We're starting a new file."""
         json_filename = json.dumps(filename)
         if self.files_reported_count > 0:
-            self.write_line(", {}: [".format(json_filename))
+            self.write_line(f", {json_filename}: [")
         else:
-            self.write_line("{}: [".format(json_filename))
+            self.write_line(f"{json_filename}: [")
         self.reported_errors_count = 0
 
     def finished(self, filename):
@@ -66,7 +64,7 @@ class DefaultJSON(base.BaseFormatter):
         """Format a violation."""
         formatted = json.dumps(self.dictionary_from(violation))
         if self.reported_errors_count > 0:
-            self.write_line(", {}".format(formatted))
+            self.write_line(f", {formatted}")
         else:
             self.write_line(formatted)
         self.reported_errors_count += 1
@@ -91,7 +89,7 @@ class CodeClimateJSON(base.BaseFormatter):
 
     def start(self):
         """Override the default to start printing JSON."""
-        super(CodeClimateJSON, self).start()
+        super().start()
         self.write_line("{")
         self.files_reported_count = 0
 
@@ -103,9 +101,9 @@ class CodeClimateJSON(base.BaseFormatter):
         """We're starting a new file."""
         json_filename = json.dumps(filename)
         if self.files_reported_count > 0:
-            self.write_line(", {}: [".format(json_filename))
+            self.write_line(f", {json_filename}: [")
         else:
-            self.write_line("{}: [".format(json_filename))
+            self.write_line(f"{json_filename}: [")
         self.reported_errors_count = 0
 
     def finished(self, filename):
@@ -153,7 +151,7 @@ class CodeClimateJSON(base.BaseFormatter):
         """Format a violation."""
         formatted = json.dumps(self.dictionary_from(violation))
         if self.reported_errors_count > 0:
-            self.write_line(", {}".format(formatted))
+            self.write_line(f", {formatted}")
         else:
             self.write_line(formatted)
         self.reported_errors_count += 1
