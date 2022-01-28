@@ -159,5 +159,7 @@ class CodeClimateJSON(base.BaseFormatter):
         return string
 
     def show_source(self, violation):
-        """Codeclimate does not have a good place to show the source. Return None."""
+        """ Codeclimate does not have a good place to show the source. 
+        Return None instead.
+        """
         return None
