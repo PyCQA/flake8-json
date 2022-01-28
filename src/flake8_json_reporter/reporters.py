@@ -83,33 +83,33 @@ class CodeClimateJSON(base.BaseFormatter):
         if self.output_fd is None or self.options.tee:
             print(output, end=self.newline)
 
-    def write_line(self, line):
+    def write(self, line = None, source = None) -> None:
         """Override write for convenience."""
-        self.write(line, None)
+        self._write(line)
 
     def start(self):
         """Override the default to start printing JSON."""
         super().start()
-        self.write_line("{")
+        self.write("{")
         self.files_reported_count = 0
 
     def stop(self):
         """Override the default to finish printing JSON."""
-        self.write_line("}")
+        self.write("}")
 
     def beginning(self, filename):
         """We're starting a new file."""
         json_filename = json.dumps(filename)
         if self.files_reported_count > 0:
-            self.write_line(f", {json_filename}: [")
+            self.write(f", {json_filename}: [")
         else:
-            self.write_line(f"{json_filename}: [")
+            self.write(f"{json_filename}: [")
         self.reported_errors_count = 0
 
     def finished(self, filename):
         """We've finished processing a file."""
         self.files_reported_count += 1
-        self.write_line("]")
+        self.write("]")
 
     @staticmethod
     def _fingerprint(violation):
@@ -151,7 +151,13 @@ class CodeClimateJSON(base.BaseFormatter):
         """Format a violation."""
         formatted = json.dumps(self.dictionary_from(violation))
         if self.reported_errors_count > 0:
-            self.write_line(f", {formatted}")
+            string = ", {}".format(formatted)
         else:
-            self.write_line(formatted)
+            string = formatted
+
         self.reported_errors_count += 1
+        return string
+
+    def show_source(self, violation):
+        """Codeclimate does not have a good place to show the source. Return None."""
+        return None
