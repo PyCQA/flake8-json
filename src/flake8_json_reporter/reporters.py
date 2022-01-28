@@ -83,7 +83,7 @@ class CodeClimateJSON(base.BaseFormatter):
         if self.output_fd is None or self.options.tee:
             print(output, end=self.newline)
 
-    def write(self, line = None, source = None) -> None:
+    def write(self, line=None, source=None) -> None:
         """Override write for convenience."""
         self._write(line)
 
@@ -151,7 +151,7 @@ class CodeClimateJSON(base.BaseFormatter):
         """Format a violation."""
         formatted = json.dumps(self.dictionary_from(violation))
         if self.reported_errors_count > 0:
-            string = ", {}".format(formatted)
+            string = f", {formatted}"
         else:
             string = formatted
 
