@@ -16,14 +16,11 @@ jobs:
           toxenv: flake8
         - os: ubuntu-latest
           python: 3.9
-          toxenv: pre-commit
-        - os: ubuntu-latest
-          python: 3.9
           toxenv: py
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python }}
     - run: python -mpip install --upgrade setuptools pip tox virtualenv
