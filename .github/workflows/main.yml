@@ -17,6 +17,9 @@ jobs:
         - os: ubuntu-latest
           python: 3.9
           toxenv: pre-commit
+        - os: ubuntu-latest
+          python: 3.9
+          toxenv: py
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2

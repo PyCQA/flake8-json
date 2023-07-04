@@ -1,9 +1,9 @@
 Flake8-JSON
 ===========
 
-This is a plugin for Flake8 that will format the output as JSON. By default,
-the output is **not** pretty-printed. We would love to add that as a separate
-formatter option, though.
+This is a plugin for Flake8 that will format the output as JSON. The output of
+the default JSON formatter is not pretty-printed. If you'd like the output to
+be pretty-printed, use json-pretty instead.
 
 CodeClimate support is also offered through this plugin as of v20.12.0
 
@@ -22,6 +22,10 @@ Usage
 .. code-block:: bash
 
     flake8 --format=json ...
+
+.. code-block:: bash
+
+    flake8 --format=json-pretty ...
 
 .. code-block:: bash
 
