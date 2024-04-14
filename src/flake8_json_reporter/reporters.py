@@ -32,6 +32,7 @@ class DefaultJSON(base.BaseFormatter):
     def stop(self):
         """Override the default to finish printing JSON."""
         self.write_line("}")
+        super().stop()
 
     def beginning(self, filename):
         """We're starting a new file."""
@@ -83,6 +84,8 @@ class FormattedJSON(DefaultJSON):
         if self.files_reported_count > 0:
             self.write_line("\n")
         self.write_line("}\n")
+        # DefaultJSON.stop would write and extra close brace
+        base.BaseFormatter.stop(self)
 
     def beginning(self, filename):
         """We're starting a new file."""
@@ -139,6 +142,7 @@ class CodeClimateJSON(base.BaseFormatter):
     def stop(self):
         """Override the default to finish printing JSON."""
         self.write_line("}")
+        super().stop()
 
     def beginning(self, filename):
         """We're starting a new file."""
