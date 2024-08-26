@@ -46,4 +46,4 @@ and ensure that you've read the PyCQA's `Code of Conduct`_.
 
 
 .. _Code of Conduct:
-    http://meta.pycqa.org/en/latest/code-of-conduct.html
+    https://meta.pycqa.org/code-of-conduct.html
