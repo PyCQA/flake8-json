@@ -1,4 +1,5 @@
 """Packaging logic for Flake8-JSON."""
+
 import os
 import sys
 
