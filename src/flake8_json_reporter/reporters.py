@@ -1,4 +1,5 @@
 """Module containing all of the JSON reporters for Flake8."""
+
 import hashlib
 import json
 import textwrap
